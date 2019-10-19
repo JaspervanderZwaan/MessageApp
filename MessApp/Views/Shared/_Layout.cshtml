@@ -1,0 +1,17 @@
+﻿<head>
+    <link type="text/css" rel="stylesheet" href="~/css/site.css" />
+    <title>@ViewData["Title"] / MessApp</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-content">
+            <a asp-controller="home" asp-action="index" class="navbar-logo">Home</a>
+            <a asp-controller="home" asp-action="privacy" class="navbar-link">Privacy</a>
+        </div>
+    </div>
+    <div class="content">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+</body>
