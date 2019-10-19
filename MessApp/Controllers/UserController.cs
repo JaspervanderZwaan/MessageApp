@@ -31,7 +31,7 @@ namespace MessApp.Controllers
             {
                 if (UserRepository.Authenticate(user))
                 {
-                    return View();
+                    return RedirectToAction("Index", "Home");
                 }
             }
             return View();

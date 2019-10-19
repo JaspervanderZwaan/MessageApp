@@ -7,9 +7,11 @@ namespace Data.Contexts
 {
     public class UserSqlContext : IUserContext
     {
+        private readonly DatabaseHandler DatabaseHandler = new DatabaseHandler();
+
         public bool Authenticate(User user)
         {
-            throw new NotImplementedException();
+            return DatabaseHandler.GetAffectedRowCount($"EXEC [AuthenticateUser] '{user.Username}', '{user.Password}'") == 1;
         }
 
         public bool Delete(int id)
@@ -29,7 +31,7 @@ namespace Data.Contexts
 
         public bool Insert(User user)
         {
-            throw new NotImplementedException();
+            return DatabaseHandler.GetAffectedRowCount($"EXEC [InsertUser] '{user.Username}', '{user.Email}', '{user.Password}', 0") == 1;
         }
 
         public List<User> Search(string searchquery)
